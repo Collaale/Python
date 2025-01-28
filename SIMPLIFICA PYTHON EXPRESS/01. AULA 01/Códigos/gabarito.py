@@ -30,4 +30,5 @@ for nome in dados['nomecompleto']:
     pdf.text(50, 185, texto4)
 
     # Salvar o PDF com um nome de arquivo único
-    pdf.output(f"Certificado_{nome}.pdf")
+    pdf.output(f"D:/Python/SIMPLIFICA PYTHON EXPRESS/01. AULA 01/Códigos/Certificado_{nome}.pdf")
+
