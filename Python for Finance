@@ -1,0 +1,2383 @@
+Output
+
+
+Before diving into financial calculations, we first need to cover some Python basics.
+In Python, we use the print function to output text.
+
+For example:
+
+
+print('Hello world!')
+Hello world!
+
+
+The print statement is always followed by parentheses containing the output we want to generate.
+
+
+Text
+
+
+As we saw in the previous example, text is enclosed in quotes.
+This is called a string.
+
+We can create a string by entering text between two single or double quotation marks. Like this:
+
+print('Coding in Finance')
+
+print("An investment in knowledge pays the best interest.")
+
+
+The delimiter (" or ') used for a string has no effect on how it behaves in any way.
+
+
+
+
+x = 9
+y = 5
+
+#multiplication
+print(x*y) 
+
+#division
+print(x/y)
+
+#exponentiation: raise one number to the power of another 
+print(x**y)
+
+#Quotient: the quantity produced by the division of two numbers.
+print(x//y) 
+
+#remainder
+print(x%y) 
+
+
+45
+1.8
+59049
+1
+4
+
+Python allows you to perform calculations with really big numbers! Try to change the code to calculate multiplication of two very large numbers.
+
+
+Problem
+Variables
+
+
+The provided code stores the value 7 in a variable, and outputs it.
+
+Task
+Change the code to output the value of the variable raised to the power of 3.
+Exponentiation can be used to raise a number to the power of another.
+
+
+x = 7
+
+print(x**3)
+
+##########################################################
+
+Packages
+
+
+We already know how to create variables and perform operations with them.
+We need to learn another important concept before diving into financial problems.
+
+One of the benefits of Python is the availability of numerous packages that you can use.
+
+Packages contain functions that you can import and use in your code to perform different calculations and 
+tasks, such as calculating internal return rates, compound interest, and much more.
+
+Let's learn about functions and packages!
+
+
+import math as m 
+
+
+import math as m
+
+x = m.sqrt(4096)
+print(x)
+
+#64.0
+
+
+Example
+
+
+Now that we know how to import packages and call functions, let's look at a simple example which calculates the future value of an investment.
+
+Let's assume you invest $1000 for 5 years at an annual return rate of 8%.
+We need to calculate how much our investment will be worth after 5 years.
+
+
+import numpy_financial as npf
+res = npf.fv(rate=0.08, nper=5, pmt=0, pv=-1000)
+print(res)
+
+#1469.3280768000006
+
+
+We imported the NumpyFinancial package, and used its fv() function to calculate the future value based on the parameters.
+The interest rate is given as a decimal, 1 representing 100%, thus 0.08 corresponds to 8%.
+nper is the number of periods.
+pv is the present value, which in our case is an investment of $1000, thus the negative sign.
+pmt corresponds to periodic payments/investments, which in our case is 0.
+Numpy Financial has many useful financial functions which we will cover in the next lessons.
+
+
+
+Numpy Arrays
+
+
+Numpy Financial is built on Numpy, which is a package used in scientific computing. The core feature of Numpy is its array, which is used to store data as well as to perform calculations.
+An array allows you to store multiple values in a single variable.
+
+For example, let's declare an array of prices:
+
+prices = [42.8, 102.03, 240.38, 80.9]  
+
+
+As you can see, the array is assigned to a variable, which stores multiple values.
+The elements of an array are separated using commas.
+
+prices = [42.8, 102.03, 240.38, 80.9] 
+print(prices[1])
+#102.03
+
+The first item's index is 0, rather than 1, as might be expected. That's why we use the index [1] to access the 2nd item.
+
+
+Numpy Arrays
+
+
+Now, after importing the numpy package, we can apply various Numpy functions on the array and get the result:
+
+
+import numpy as np
+
+prices = [42.8, 102.03, 240.38, 80.9]
+
+print(np.mean(prices))
+
+print(np.std(prices))
+
+print(np.sum(prices))
+
+print(np.max(prices))
+
+116.5275
+74.59001654879827
+466.11
+240.38
+
+
+mean - returns the average value of the array.
+std - returns the standard deviation
+sum - returns the sum of all values
+max - returns the maximum value.
+
+
+Welcome to Code Repo!
+
+
+In this project we will analyze Bitcoin prices, calculate the investment values, and analyze return rates.
+This project will involve multiple steps, with each step requiring a number of tasks to accomplish.
+We will start with easy tasks using static data, and progress to more advanced tasks that use real data we will obtain from the web.
+By the end of the project, we will be able to fetch Bitcoin’s real price, and analyze and create charts based on its historic values.
+
+Let's get started!
+
+Task
+The given code includes an array that identifies Bitcoin's price as of January 1 of each year between 2018-2021.
+Create a program to calculate and output the standard deviation of the price values.
+
+Expected result
+10513.803224771947 
+Use the np.std() function with the array as an argument to calculate the standard deviation.
+
+
+import numpy as np
+import numpy_financial as npf
+
+#price for 2018-2021
+bitcoin = [3869.47, 7188.46, 22203.31, 29391.78]
+
+print(np.std(bitcoin))
+
+
+
+Fill in the blanks to calculate the future value of investing $1 for 20 years. Each year the investment doubles in value (100% interest).
+import numpy_financial as npf
+
+res = npf.fv(   rate=1,    nper=20,    pmt=0,    pv=-1)
+
+
+
+Numpy Financial
+
+
+As we have seen in the previous example, the NumpyFinancial package includes many useful financial functions.
+
+To use them, we first need to import the package:
+
+
+import numpy_financial as npf
+
+
+npf is a commonly used abbreviation used when importing the package.
+
+
+Numpy Financial
+
+
+After importing the package, we can access its functions using its name and a dot..
+
+We already saw the fv() function in action, which stands for future value.
+
+import numpy_financial as npf
+
+res = npf.fv(rate=0.08, nper=5, pmt=0, pv=-1000)
+print(res)
+
+
+1469.3280768000006
+
+
+Similarly, the pv() function is used to calculate the present value of an investment.
+For example, let's calculate the present value of an investment, that needs to total 1000 in 8 years, with an annual interest rate of 10%:
+
+
+
+import numpy_financial as npf
+
+res = npf.pv(rate = 0.10, nper=8, pmt=0, fv=1000)
+print(res)
+
+-466.50738020973307
+
+
+The code will result in the amount you need to invest today to get to 1000 in 8 years.
+
+
+
+
+Numpy Financial
+Drag & drop to calculate the amount you need to invest annually for 15 years at an interest rate of 7%, to result in a total amount of 150000.
+
+
+npf. pv ( rate = 0.07,    nper=15,    pmt=0,    fv=150000)
+
+
+#################################################################################
+
+
+Monthly Loan Payments
+
+
+The pmt() function is used to compute the payment against loan principal plus interest.
+
+Let's say we want to calculate how much we have to pay monthly to pay back a loan of 100,000 in 5 years. The yearly interest rate is 7%, and is calculated monthly.
+
+
+import numpy_financial as npf
+res = npf.pmt(rate=0.07/12, nper=5*12, pv=100000, fv=0) 
+print(res)
+
+-1980.1198540349467
+
+
+
+As we need to calculate monthly payments, we set the rate and periods (nper) in months. The pv parameter shows the present value of the loan, while the fv shows the future value we want to achieve.
+Run the code to see the resulting monthly payments amount. You can use this method to calculate mortgage payments, for example.
+
+
+Monthly Loan Payments
+
+What is the value of the fv (future value) parameter for the pmt() function, in the event that we need to pay back a loan completely.
+
+0
+
+
+pmt()
+
+
+Note that aside from computing a monthly mortgage payment, the pmt() function can be used to return the periodic deposit one must make to achieve a specified future balance with a given interest rate.
+
+For example:
+
+
+import numpy_financial as npf
+
+res = npf.pmt(rate=0.10/12, nper=5*12, pv=0, fv=50000) 
+print(res)
+
+
+-645.6855688967499
+
+
+The code will return the monthly deposits needed to achieve 50000 in 5 years with 10% annual interest.
+Try to write a program to calculate how much you need to save annually to get to your desired retirement savings.
+
+
+######################################################################################
+
+IRR
+
+
+Numpy Financial has an irr() function, used to calculate the IRR (Internal Rate of Return).
+
+Let's assume we invested 5000 and got the following payments back: 500, 700, 1000, 3000.
+To calculate the IRR, we first need to declare an array with the values, with the first value being our initial investment:
+
+cashflow = [-5000, 500, 700, 1000, 3000]
+
+Now, we can use the irr() function:
+
+
+
+import numpy_financial as npf
+
+cashflow = [-5000, 500, 700, 1000, 3000]
+print(npf.irr(cashflow))
+
+0.012164656866492818
+
+This will calculate the internal rate of return.
+
+
+Comparing IRR
+
+
+Let's use the irr() function to compare two investment opportunities and decide which one is better.
+
+Option 1:
+Requires 50K in investment
+Will pay 10K, 25K, 25K, 35K, 42K each year for the next 5 years.
+
+Option 2:
+Requires 30K in investment
+Will pay 10K, 13K, 18K, 25K, 20K each year for the next 5 years.
+
+Let's calculate the IRR for each investment and compare:
+
+
+import numpy_financial as npf
+
+cf1 = [-50000, 10000, 25000, 25000, 35000, 42000]
+cf2 = [-30000, 10000, 13000, 18000, 25000, 20000]
+
+print("Option 1: ", npf.irr(cf1))
+print("Option 2: ", npf.irr(cf2)) 
+
+
+Option 1:  0.3605982754620045
+Option 2:  0.4094208743397143
+
+
+We declare an array for the cash flow for each option and use the irr() function.
+
+
+###################################################################################################
+
+
+IRR
+
+
+Let's continue with our Bitcoin project!
+
+You decide to start a Bitcoin mining business in January of 2017. You make an initial investment of $500K to buy the required mining hardware.
+Each year the hardware can mine 10 bitcoins, so your first return will come on January 1, 2018.
+
+Task
+Calculate the return for each year and output the IRR of the project.
+
+Hint
+Create an array with the initial investment as the first element (with a negative value), followed by the cost of 10 bitcoins per year -- multiply the values of the given array by 10 and accordingly add them to the list you created, placing them after the investment value.
+
+Expected result
+0.07297215919675315 
+
+Use npf.irr() function to calculate the IRR.
+
+
+
+import numpy as np
+import numpy_financial as npf
+
+#price for 2018-2021
+bitcoin = [3869.47, 7188.46, 22203.31, 29391.78]
+
+#CollaCode
+tenBit = [item * 10 for item in bitcoin]
+tenBit.insert(0,-500000)
+
+
+print(npf.irr(tenBit))
+
+#print(np.std(bitcoin))
+
+
+
+###################################################################################################
+
+
+Comparing IRR
+Guess the result of this code:
+
+import numpy_financial as npf
+cf = [-1, 1]
+print(npf.irr(cf))
+0.0
+
+
+Plotting Data
+
+
+Now that we know how to perform basic financial calculations, let's look at plotting charts.
+Python has a package named matplotlib, which includes a pyplot sub-package used to create graphs and charts.
+To use it, we first need to import it:
+
+
+import matplotlib.pyplot as plt  
+
+plt is a common name used when importing the package.
+
+
+
+Plotting Data
+
+
+Let's assume we have a company's 5 month revenue data in an array:
+rev = [18000, 25000, 20000, 45000, 19500] 
+
+We want to plot a chart visualizing the revenue data.
+To do that, we simply need to call the plot function on our data:
+
+
+import matplotlib.pyplot as plt
+
+rev = [18000, 25000, 20000, 45000, 32000]
+plt.plot(rev)
+
+plt.savefig('plot.png')
+
+The savefig() function is used to save the chart as an image, so it can be displayed in our Code Playground.
+
+
+Plotting Data
+
+
+The plot() function can also take values for both the x and y axis.
+Let's add the month names on the horizontal axis:
+
+
+
+import matplotlib.pyplot as plt
+
+rev = [18000, 25000, 20000, 45000, 32000]
+months = ['June', 'July', 'August', 'September', 'October']
+plt.plot(months, rev)
+plt.savefig('plot.png')
+
+Now you know how to perform basic financial calculations and create plots using Python!
+You can store data in arrays, manipulate and perform calculations using the Numpy and Numpy Financial packages and create charts with just a couple lines of code.
+
+
+################################################################################################
+
+
+Plotting
+
+
+Let's continue with our Bitcoin calculations.
+You decide to invest $1000 in Bitcoin in 2018, at the price in the declared array: $3869.47.
+
+Tasks
+1. Calculate how much your investment is worth at the end of each year using the prices denoted in the code.
+2. Draw a chart to showcase how much your $1000 investment changes in value each year.
+
+Hint
+First, calculate how many Bitcoins you will have at the start by dividing your investment by the cost of Bitcoin in the first year (the first element of the given array). Then multiply the entire array of the prices by that number to get the value for each year. Use np.multiply(array, number) to multiply an array with a number.
+
+Expected chart
+
+Don't forget to import the matplotlib.pyplot package under the name "plt" to draw the chart using plt.plot() function.
+Add the plt.savefig() function (using the name of the chart as an argument) at the end of the code to draw the chart in the CodePlayground.
+
+
+
+import numpy as np
+import numpy_financial as npf
+import matplotlib.pyplot as plt
+
+#price for 2018-2021
+bitcoin = [3869.47, 7188.46, 22203.31, 29391.78]
+
+#CollaCode
+tenBit = [item * 10 for item in bitcoin]
+tenBit.insert(0,-500000)
+
+
+irr = npf.irr(tenBit)
+
+res = npf.fv(rate=irr, nper=4, pmt=0, pv=-1000)
+#print(res)
+
+tou = bitcoin
+tou.insert(0,-1000)
+
+irrTou2018 = npf.irr([-1000,3869.47])
+irrTou2019 = npf.irr([-1000,7188.46])
+irrTou2020 = npf.irr([-1000,22203.31])
+irrTou2021 = npf.irr([-1000,29391.78])
+
+a2018 = npf.fv(rate=irrTou2018, nper=1, pmt=0, pv=-1000)
+a2019 = npf.fv(rate=irrTou2019, nper=1, pmt=0, pv=-2018)
+a2020 = npf.fv(rate=irrTou2020, nper=1, pmt=0, pv=-2019)
+a2021 = npf.fv(rate=irrTou2021, nper=1, pmt=0, pv=-2020)
+
+years = []
+years.insert(0,a2018)
+years.insert(1,a2019)
+years.insert(2,a2020)
+years.insert(3,a2021)
+
+
+ye = [2018, 2019, 2020, 2021]
+plt.plot(ye, years)
+
+plt.savefig('plot.png')
+
+print(years)
+
+#print(np.std(bitcoin))
+
+
+###################################################################
+
+
+
+
+Fill in the blanks to calculate and output the IRR of an investment of 5000, which returns the following amounts annually: 2000, 4000, 3000.
+
+arr = [-5000, 2000, 4000, 3000]res = npf.irr(arr)
+print(res)
+
+
+
+
+Drag and drop to calculate the monthly deposits required to achieve $50K in 5 years, with an annual interest rate of 10%.
+
+npf.pmt(  rate = 0.10/12, nper=5*12, pv=0, fv=50000)
+
+
+
+Fill in the blanks to plot the data stored in the array.
+
+import matplotlib.pyplot as plt
+rev = [1800, 2500, 2000, 4500]
+
+plt.plot(rev)
+
+
+
+The Numpy sqrt function calculates the square root of each value in an array and returns a new array with the result.
+Import the correct packages to make the following code work.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rev = [18000, 25000, 20000, 45000, 32000]
+
+rev = np.sqrt(rev)
+
+plt.plot(rev)
+
+
+##########################################################################
+
+
+Financial Data
+
+
+Now, that we know how to handle basic calculations using Numpy, let's dive into more advanced topics!
+
+In this module we will learn how to access financial data from the web.
+We will look at two methods to access the data: web scraping and using a Python package.
+
+
+Fill in the blanks to declare an array and create a chart based on it.
+
+import matplotlib.pyplot as plt
+
+data = [123, 431, 98, 42.5]
+
+plt.plot(data)
+
+
+Web Scraping
+
+
+Web scraping is the process of using a program to extract content and data from a website.
+Web scraping extracts the underlying HTML code of a website.
+
+This method can be used to scrape any public web page.
+Web pages might have restrictions on how you can use their data, so make sure to refer to their privacy policy if you intend to use a website's data.
+
+Python Package
+
+
+Another way to access data is to use a dedicated Python package.
+There are numerous packages created by the Python community that serve this purpose.
+
+One example is the package called yfinance, which offers a convenient way to access data from Yahoo Finance.
+
+In the upcoming lessons we will learn how to access data from Yahoo Finance using scraping, as well as from the yfinance package.
+Yahoo Finance is a reliable and popular source for financial data.
+
+
+
+################################################################################
+
+Pandas
+
+
+To scrape data from the web using Python, we first need to learn about Pandas, which is another useful package.
+
+It can be used to scrape and store data in tabular format.
+With the help of Pandas, we will only need a couple of lines of code to get our desired data.
+
+To start using pandas, we need to import it first:
+
+
+*************************import pandas as pd 
+
+
+pd is a common abbreviation used when importing the library.
+
+
+Pandas
+
+
+The two primary components of pandas are the Series and the DataFrame.
+
+A Series is essentially a column, and a DataFrame is a multi-dimensional table made up of a collection of Series.
+
+For example, the following DataFrame is made of two Series, ages and heights
+
+You can think of a Series as an array, while a DataFrame is a collection of arrays.
+
+
+
+
+Series
+
+
+Let's create a Pandas Series based on an array:
+
+
+
+import pandas as pd
+
+prices = [42.8, 102.03, 240.38, 80.9] 
+s = pd.Series(prices) 
+print(s)
+
+
+0     42.80
+1    102.03
+2    240.38
+3     80.90
+dtype: float64
+
+
+Now we can use Pandas functions on the Series.
+For example, we can use the describe() function to see the key statistics:
+
+
+
+import pandas as pd
+
+prices = [42.8, 102.03, 240.38, 80.9] 
+s = pd.Series(prices)
+print(s.describe()) 
+
+count      4.000000
+mean     116.527500
+std       86.129132
+min       42.800000
+25%       71.375000
+50%       91.465000
+75%      136.617500
+max      240.380000
+dtype: float64
+
+
+You can access the elements of the Series similar to arrays, using square brackets and the index. For example: s[1] will access the second element.
+
+
+DataFrame
+
+
+A DataFrame is similar to a spreadsheet, storing data in rows and columns. It is a collection of Series, which correspond to the columns.
+
+Let's create a DataFrame, which holds prices and their corresponding dates:
+
+import pandas as pd
+
+data = {
+  'date': ['2021-06-10', '2021-06-11', '2021-06-12', '2021-06-13'],
+  'prices': [42.8, 102.03, 240.38, 80.9]
+}
+df = pd.DataFrame(data)
+print(df)
+
+
+         date  prices
+0  2021-06-10   42.80
+1  2021-06-11  102.03
+2  2021-06-12  240.38
+3  2021-06-13   80.90
+
+The code above creates a DataFrame that has two columns: date and prices.
+Pandas provides many useful functions to manipulate data in a DataFrame.
+We will look at them in the next lessons, while scraping data from the web.
+You can learn more about Pandas and DataFrames in our Python for Data Science course.
+
+
+Drag and drop to create a valid DataFrame.
+
+
+import pandas as pd
+
+data = {'id': [42, 8, 54],'name': ['A', 'B', 'C']}
+df = pd.DataFrame(data)
+
+
+#############################################################################
+
+
+Web Scraping
+
+
+Pandas provides a read_html() function, which can be used to convert tables on web pages to DataFrames.
+
+For example, let's scrape the list of S&P 500 companies from Wikipedia.
+The list is available on the Wikipedia article page as a table.
+We simply need to call the read_html() function with the URL of the page as the parameter:
+
+
+**********************data = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+
+
+Each table on the web page is stored as the DataFrame at a separate index. The first table has the index 0, the second table - the index 1, and so on.
+Let's access and output the first table:
+
+
+import pandas as pd
+
+data = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+df = data[0]
+print(df)
+
+
+    Symbol              Security  ...      CIK      Founded
+0      MMM                    3M  ...    66740         1902
+1      AOS           A. O. Smith  ...    91142         1916
+2      ABT                Abbott  ...     1800         1888
+3     ABBV                AbbVie  ...  1551152  2013 (1888)
+4     ABMD               Abiomed  ...   815094         1981
+..     ...                   ...  ...      ...          ...
+498    YUM           Yum! Brands  ...  1041061         1997
+499   ZBRA    Zebra Technologies  ...   877212         1969
+500    ZBH         Zimmer Biomet  ...  1136869         1927
+501   ZION  Zions Bancorporation  ...   109380         1873
+502    ZTS                Zoetis  ...  1555280         1952
+
+[503 rows x 9 columns]
+
+
+Because of its large size the table can look a bit complicated.
+
+
+Web Scraping
+
+
+Let's select and output only the Symbol and Security columns:
+
+
+import pandas as pd
+
+data = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+df = data[0]
+
+df = df[['Symbol', 'Security']]
+print(df) 
+
+
+    Symbol              Security
+0      MMM                    3M
+1      AOS           A. O. Smith
+2      ABT                Abbott
+3     ABBV                AbbVie
+4     ABMD               Abiomed
+..     ...                   ...
+498    YUM           Yum! Brands
+499   ZBRA    Zebra Technologies
+500    ZBH         Zimmer Biomet
+501   ZION  Zions Bancorporation
+502    ZTS                Zoetis
+
+[503 rows x 2 columns]
+
+
+
+We can also filter the table, for example, by company name:
+
+
+import pandas as pd
+
+data = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+df = data[0]
+df = df[df['Security'] == 'Apple']
+print(df)
+
+
+Empty DataFrame
+Columns: [Symbol, Security, SEC filings, GICS Sector, GICS Sub-Industry, Headquarters Location, Date first added, CIK, Founded]
+Index: []
+
+
+The info() function can be used to see all available columns:
+
+
+import pandas as pd
+data = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+df = data[0]
+df.info()
+
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 503 entries, 0 to 502
+Data columns (total 9 columns):
+ #   Column                 Non-Null Count  Dtype 
+---  ------                 --------------  ----- 
+ 0   Symbol                 503 non-null    object
+ 1   Security               503 non-null    object
+ 2   SEC filings            503 non-null    object
+ 3   GICS Sector            503 non-null    object
+ 4   GICS Sub-Industry      503 non-null    object
+ 5   Headquarters Location  503 non-null    object
+ 6   Date first added       458 non-null    object
+ 7   CIK                    503 non-null    int64 
+ 8   Founded                503 non-null    object
+dtypes: int64(1), object(8)
+memory usage: 35.5+ KB
+
+
+You can learn more about data manipulation with Pandas in our Python for Data Science course.
+
+Web Scraping
+A DataFrame called 'data' stores data on people. It has an Age column. Drag and drop to select only those rows that have an Age value greater than 18.
+
+res = data[data['Age'] > 18 ]
+
+
+################################################################################
+
+
+Web Scraping
+
+
+Let's head to Yahoo Finance, which provides data on companies, their financial performance and profile.
+
+For example, here is Tesla's profile page: https://finance.yahoo.com/quote/TSLA/profile
+
+The first table is a list of Key Executives. Let's scrape it into a DataFrame:
+
+
+****************data = pd.read_html('https://finance.yahoo.com/quote/TSLA/profile')
+
+This code will cause an error, because Yahoo checks the requester and requires a valid header.
+Tap Continue to learn how to fix the error.
+
+
+Web Scraping
+
+In order to fix the error, we need to specify the request header. For that, we will use the requests package and provide it with a valid header
+
+import pandas as pd
+import requests
+
+url_link = 'https://finance.yahoo.com/quote/TSLA/profile'
+r = requests.get(url_link,headers ={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'})
+
+data = pd.read_html(r.text)
+print(data[0]) 
+
+                                Name  ... Year Born
+0                   Mr. Elon R. Musk  ...    1972.0
+1  Mr. Zachary John Planell Kirkhorn  ...    1985.0
+2              Mr. Andrew D. Baglino  ...    1981.0
+3                 Mr. Vaibhav Taneja  ...    1978.0
+4                  Mr. Martin Viecha  ...       NaN
+5                  Mr. Alan Prescott  ...    1979.0
+6                    Mr. Dave Arnold  ...       NaN
+7                       Brian Scelfo  ...       NaN
+8            Mr. Jeffrey B. Straubel  ...    1976.0
+9           Mr. Franz von Holzhausen  ...       NaN
+
+[10 rows x 5 columns]
+
+
+We used the requests package to get the data and pass it to the read_html() function.
+A request header is used in an HTTP request to provide information about the request context, so that the server can tailor the response. We provided data for a standard web browser.
+
+
+Web Scraping
+
+
+Now, we can access other financial metrics.
+For example, let's scrape the Earnings Estimates from the Analysis page:
+
+
+import pandas as pd
+import requests
+
+url_link = 'https://finance.yahoo.com/quote/TSLA/analysis?p=TSLA'
+r = requests.get(url_link,headers ={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'})
+
+data = pd.read_html(r.text)
+print(data[0])  
+
+
+  Earnings Estimate  ...  Next Year (2023)
+0   No. of Analysts  ...             30.00
+1     Avg. Estimate  ...              5.80
+2      Low Estimate  ...              4.07
+3     High Estimate  ...              8.58
+4      Year Ago EPS  ...              4.08
+
+
+[5 rows x 5 columns]
+
+
+We used the index [0] as it's the first table on the page.
+
+Now we can access the Avg. Estimate row from the table and plot it as a bar chart:
+
+
+import pandas as pd
+import requests
+import matplotlib.pyplot as plt
+
+url_link = 'https://finance.yahoo.com/quote/TSLA/analysis?p=TSLA'
+r = requests.get(url_link,headers ={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'})
+
+data = pd.read_html(r.text)
+data = data[0]
+data = data[data['Earnings Estimate'] == 'Avg. Estimate']
+
+data.plot(kind='bar')
+
+plt.savefig('plot.png')
+
+
+
+Run the code to see the chart, showing the Avg. Estimate values from the table.
+Note that we called the plot() function right on the DataFrame, specifying the type of the chart.
+This was just an example of data. You can scrape and use any data that is in a table format from the web using this technique.
+
+##############################################################################################
+
+yFinance
+
+
+Scraping Yahoo Finance involves manual work, including adding a header, specifying the URL, making the request and using the read_html() function.
+
+Another way to get financial data from Yahoo Finance is to use the yfinance package.
+It was created to provide a super easy way to access the financial data, without the need for manual work.
+
+We need to install and import it first:
+import yfinance as yf 
+PY
+The package is created and distributed to the Python community by an independent developer.
+
+
+
+yFinance
+Drag and drop to output the RoE of Amazon
+
+data = yf.Ticker("AMZN")
+print(data.info['returnOnEquity'])
+
+
+yFinance
+
+
+In addition to the info fields, the data object provides the following fields:
+
+yFinance
+
+
+In addition to the info fields, the data object provides the following fields:
+
+
+import yfinance as yf
+
+data = yf.Ticker("TSLA")
+
+# show dividends
+print(data.dividends)
+
+# show splits
+print(data.splits)
+
+# show balance sheet
+print(data.balance_sheet)
+
+# show cashflow
+print(data.cashflow)
+
+# show earnings
+print(data.earnings)
+
+
+Series([], Name: Dividends, dtype: int64)
+Date
+2020-08-31    5.0
+2022-08-25    3.0
+Name: Stock Splits, dtype: float64
+                             2021-12-31  ...    2018-12-31
+Intangible Assets          2.570000e+08  ...  2.820000e+08
+Capital Surplus            2.980300e+10  ...  1.024900e+10
+Total Liab                 3.054800e+10  ...  2.342700e+10
+Total Stockholder Equity   3.018900e+10  ...  4.923000e+09
+Minority Interest          1.394000e+09  ...  1.390000e+09
+Other Current Liab         4.756000e+09  ...  2.955000e+09
+Total Assets               6.213100e+10  ...  2.974000e+10
+Common Stock               1.000000e+06  ...           NaN
+Other Current Assets       3.450000e+08  ...  1.930000e+08
+Retained Earnings          3.310000e+08  ... -5.318000e+09
+Other Liab                 3.896000e+09  ...  2.318000e+09
+Good Will                  2.000000e+08  ...  6.800000e+07
+Treasury Stock             5.400000e+07  ... -8.000000e+06
+Other Assets               3.398000e+09  ...  1.380000e+09
+Cash                       1.757600e+10  ...  3.686000e+09
+Total Current Liabilities  1.970500e+10  ...  9.993000e+09
+Short Long Term Debt       1.088000e+09  ...  2.284000e+09
+Other Stockholder Equity   5.400000e+07  ... -8.000000e+06
+Property Plant Equipment   3.117600e+10  ...  1.969100e+10
+Total Current Assets       2.710000e+10  ...  8.307000e+09
+Net Tangible Assets        2.973200e+10  ...  4.573000e+09
+Short Term Investments     1.310000e+08  ...           NaN
+Net Receivables            1.986000e+09  ...  9.490000e+08
+Long Term Debt             4.285000e+09  ...  8.461000e+09
+Inventory                  5.757000e+09  ...  3.113000e+09
+Accounts Payable           1.002500e+10  ...  3.405000e+09
+Long Term Investments               NaN  ...  1.200000e+07
+
+[27 rows x 4 columns]
+                                             2021-12-31  ...    2018-12-31
+Investments                               -1.320000e+08  ... -1.320000e+08
+Change To Liabilities                      5.371000e+09  ...  2.203000e+09
+Total Cashflows From Investing Activities -7.868000e+09  ... -2.337000e+09
+Net Borrowings                            -5.732000e+09  ...  8.900000e+07
+Total Cash From Financing Activities      -5.203000e+09  ...  5.740000e+08
+Change To Operating Activities            -3.014000e+09  ... -6.250000e+08
+Issuance Of Stock                          7.070000e+08  ...  2.960000e+08
+Net Income                                 5.519000e+09  ... -9.760000e+08
+Change In Cash                            -1.757000e+09  ...  3.120000e+08
+Effect Of Exchange Rate                   -1.830000e+08  ... -2.300000e+07
+Total Cash From Operating Activities       1.149700e+10  ...  2.098000e+09
+Depreciation                               2.810000e+09  ...  1.888000e+09
+Other Cashflows From Investing Activities -1.222000e+09  ...  4.600000e+07
+Change To Inventory                       -1.709000e+09  ... -1.023000e+09
+Change To Account Receivables             -1.300000e+08  ... -4.970000e+08
+Other Cashflows From Financing Activities -1.780000e+08  ...  1.890000e+08
+Change To Netincome                        2.650000e+09  ...  9.690000e+08
+Capital Expenditures                      -6.514000e+09  ... -2.319000e+09
+
+[18 rows x 4 columns]
+          Revenue    Earnings
+Year                         
+2018  21461000000  -976000000
+2019  24578000000  -862000000
+2020  31536000000   721000000
+2021  53823000000  5519000000
+
+
+We can also easily plot the data.
+For example, let's create a bar chart for the revenue:
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.Ticker("TSLA")
+
+x = data.earnings
+print(x)
+
+x.plot(kind="bar")
+plt.savefig('plot.png')
+
+
+As you can see, the yfinance package makes it super easy to access and use data from Yahoo Finance.
+
+
+yFinance
+Drag and drop to plot the cash flow table as bar charts.
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+data = yf.Ticker("TSLA")
+x = data.cashflpw
+x.plot(kind="bar")
+
+
+################################################################################################
+
+
+Company Data
+
+
+We can also use the yfinance package to access data on company investors.
+Let's output the list of Tesla's major holders:
+
+
+import yfinance as yf
+data = yf.Ticker("TSLA")
+print(data.major_holders)
+
+        0                                      1
+0  16.43%        % of Shares Held by All Insider
+1  44.19%       % of Shares Held by Institutions
+2  52.88%        % of Float Held by Institutions
+3    3331  Number of Institutions Holding Shares
+
+
+We can also get the list of the institutional holders:
+
+import yfinance as yf
+data = yf.Ticker("TSLA")
+print(data.institutional_holders)
+
+                          Holder     Shares Date Reported   % Out        Value
+0     Vanguard Group, Inc. (The)  204718584    2022-06-29  0.0659  43899853652
+1                 Blackrock Inc.  166106253    2022-06-29  0.0534  35619825298
+2       State Street Corporation   95363172    2022-06-29  0.0307  20449678836
+3        Capital World Investors   90506664    2022-06-29  0.0291  19408249249
+4                        Natixis   45814914    2022-06-29  0.0147   9824550270
+5  Geode Capital Management, LLC   44250381    2022-06-29  0.0142   9489051809
+6  Price (T.Rowe) Associates Inc   42699258    2022-06-29  0.0137   9156428989
+7                       FMR, LLC   35508426    2022-06-29  0.0114   7614426958
+8        Jennison Associates LLC   29537760    2022-06-29  0.0095   6334077326
+9    Baillie Gifford and Company   28212912    2022-06-29  0.0091   6049976918
+
+
+These fields are actually DataFrames. This means that you can use all the DataFrame functions and filtering options on the data.
+For example, you can use .info() to see all the columns available in the DataFrame.
+
+
+Company Data
+
+
+The .recommendations field provides data on historic recommendations by investment banks.
+
+Let's filter only the ones that are recent:
+
+import yfinance as yf
+data = yf.Ticker("TSLA")
+x = data.recommendations
+x = x[x.index > '2021-06-01']
+print(x)
+
+                                  Firm      To Grade From Grade Action
+Date                                                                  
+2021-06-14 13:55:22  Canaccord Genuity           Buy              main
+2021-06-29 11:29:11                UBS       Neutral              main
+2021-07-07 14:52:52          JP Morgan   Underweight              main
+2021-07-27 10:54:46             Mizuho           Buy              main
+2021-07-27 11:48:23        Wells Fargo  Equal-Weight              main
+...                                ...           ...        ...    ...
+2022-10-14 11:36:55        Wells Fargo  Equal-Weight              main
+2022-10-20 10:51:48        RBC Capital    Outperform              main
+2022-10-20 11:34:48            Wedbush    Outperform              main
+2022-10-20 11:46:08      Deutsche Bank           Buy              main
+2022-10-20 13:26:44             Mizuho           Buy              main
+
+[103 rows x 4 columns]
+
+The index of the DataFrame is the Date column.
+
+
+Company Data
+data.recommendations is a:
+***DataFrame
+
+
+Company Data
+
+
+Let's apply what we've learned: create a function that will take a ticker as its parameter, and output the ROE value for that ticker.
+This will allow you to compare the ROE values of different companies:
+
+
+import yfinance as yf
+
+def RoE(ticker):
+  data = yf.Ticker(ticker)
+  roe = data.info['returnOnEquity']
+  name = data.info['shortName']
+  print(name, ":", roe)
+
+Now we can call our function with different ticker values:
+
+import yfinance as yf
+
+def RoE(ticker):
+    data = yf.Ticker(ticker)
+    roe = data.info['returnOnEquity']
+    name = data.info['shortName']
+    print(name, ":", roe)
+
+RoE('AAPL')
+RoE('MSFT')
+
+Apple Inc. : 1.62816
+Microsoft Corporation : 0.47151002
+
+
+##############################################################################
+
+
+Stock Prices
+
+
+yfinance also provides the stock prices of the given ticker.
+
+import yfinance as yf
+data = yf.Ticker('TSLA')
+print(data.history())
+
+                  Open        High  ...  Dividends  Stock Splits
+Date                                ...                         
+2022-09-26  271.829987  284.089996  ...          0             0
+2022-09-27  283.839996  288.670013  ...          0             0
+2022-09-28  283.079987  289.000000  ...          0             0
+2022-09-29  282.760010  283.649994  ...          0             0
+2022-09-30  266.149994  275.570007  ...          0             0
+2022-10-03  254.500000  255.160004  ...          0             0
+2022-10-04  250.520004  257.500000  ...          0             0
+2022-10-05  245.009995  246.669998  ...          0             0
+2022-10-06  239.440002  244.580002  ...          0             0
+2022-10-07  233.940002  234.570007  ...          0             0
+2022-10-10  223.929993  226.990005  ...          0             0
+2022-10-11  220.949997  225.750000  ...          0             0
+2022-10-12  215.330002  219.300003  ...          0             0
+2022-10-13  208.300003  222.990005  ...          0             0
+2022-10-14  224.009995  226.259995  ...          0             0
+2022-10-17  210.039993  221.860001  ...          0             0
+2022-10-18  229.500000  229.820007  ...          0             0
+2022-10-19  219.800003  222.929993  ...          0             0
+2022-10-20  208.279999  215.550003  ...          0             0
+2022-10-21  206.419998  214.660004  ...          0             0
+2022-10-24  206.414993  206.779999  ...          0             0
+
+[21 rows x 7 columns]
+
+
+This will output the stock prices for the last month.
+
+We can provide a period parameter:
+
+
+
+import yfinance as yf
+data = yf.Ticker('TSLA')
+print(data.history(period='5d'))
+
+                  Open        High  ...  Dividends  Stock Splits
+Date                                ...                         
+2022-10-18  229.500000  229.820007  ...          0             0
+2022-10-19  219.800003  222.929993  ...          0             0
+2022-10-20  208.279999  215.550003  ...          0             0
+2022-10-21  206.419998  214.660004  ...          0             0
+2022-10-24  206.414993  206.779999  ...          0             0
+
+[5 rows x 7 columns]
+
+
+Valid periods: 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max.
+
+We can also provide custom start and end dates:
+
+import yfinance as yf
+data = yf.Ticker('TSLA')
+print(data.history(start="2021-01-01", end="2021-06-30"))
+
+
+                  Open        High  ...  Dividends  Stock Splits
+Date                                ...                         
+2021-01-04  239.820007  248.163330  ...          0             0
+2021-01-05  241.220001  246.946671  ...          0             0
+2021-01-06  252.830002  258.000000  ...          0             0
+2021-01-07  259.209991  272.329987  ...          0             0
+2021-01-08  285.333344  294.829987  ...          0             0
+...                ...         ...  ...        ...           ...
+2021-06-23  210.666672  219.066666  ...          0             0
+2021-06-24  224.996674  232.539993  ...          0             0
+2021-06-25  229.860001  231.270004  ...          0             0
+2021-06-28  223.880005  231.566666  ...          0             0
+2021-06-29  228.216660  229.169998  ...          0             0
+
+[123 rows x 7 columns]
+
+Fill in the blanks to get the stock prices for the last 6 months:
+
+data = yf.Ticker('AMZN')
+res = data.history(period='6mo')
+print(res)
+
+
+Stock Prices
+
+
+As the data is a DataFrame, we can easily plot it.
+Let's plot the daily Close price of Tesla stock for the last month:
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.Ticker('TSLA')
+x = data.history()['Close']
+x.plot()
+plt.savefig('plot.png')
+
+You can apply any DataFrame function and filter to manipulate the data.
+
+Stock Prices
+Drag and drop to output the average Close price of Tesla stock for the last 3 months.
+
+data = yf.Ticker('TSLA')
+x = data.history('3mo')['Close']
+print(x.mean())
+
+
+Stock Prices
+
+
+In addition, yfinance allows you to download historical prices for more than one stock simultaneously.
+For example, let's take the stock prices of Apple, Microsoft and Tesla with one line:
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+print(data['Close'])
+
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+print(data['Close'])
+
+[                       0%                       ]
+[**********************67%*******                ]  2 of 3 completed
+[*********************100%***********************]  3 of 3 completed
+                  AAPL        MSFT        TSLA
+Date                                          
+2021-01-04  129.410004  217.690002  243.256668
+2021-01-05  131.009995  217.899994  245.036667
+2021-01-06  126.599998  212.250000  251.993332
+2021-01-07  130.919998  218.289993  272.013336
+2021-01-08  132.050003  219.619995  293.339996
+...                ...         ...         ...
+2022-10-18  143.750000  238.500000  220.190002
+2022-10-19  143.860001  236.479996  222.039993
+2022-10-20  143.389999  236.149994  207.279999
+2022-10-21  147.270004  242.119995  214.440002
+2022-10-24  147.957199  245.235001  205.246307
+
+[456 rows x 3 columns]
+
+
+You need to separate the ticker symbols using spaces.
+Now we can plot the stock prices of all the 3 tickers:
+
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+data['Close'].plot()
+
+plt.savefig('plot.png')
+
+We can select the Close price of only one selected ticker, for example, MSFT, using: data['Close']['MSFT']
+
+
+
+
+Stock Prices
+Fill in the blanks to output the all-time maximum stock price for the given tickers.
+
+data = yf.dowload("SPY MSFT AAPL") 
+print(data['Close'].max())
+
+
+
+
+Fill in the blanks to plot Amazon's stock price in the last 3 months.
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.Ticker('AMZN')
+x = data.history(period='3mo')
+x = x['Close'].plot()
+
+
+############################################################################################
+
+
+Stock Returns
+
+
+Now that we know how to get stock prices, we can perform calculations and analysis.
+
+We will start by calculating the daily returns of a stock.
+
+Let's get the stock prices for Tesla over the past year:
+
+import yfinance as yf
+
+data = yf.Ticker('TSLA')
+price = data.history(period='1y') 
+
+
+In order to calculate the daily returns, we will use the pct_change() function, which calculates the percentage change between the current element and a prior one.
+We will use it on the 'Close' column:
+
+
+import yfinance as yf
+
+data = yf.Ticker('TSLA')
+price = data.history(period='1y')
+x = price['Close'].pct_change()
+print(x)
+
+Date
+2021-10-25         NaN
+2021-10-26   -0.006274
+2021-10-27    0.019078
+2021-10-28    0.037751
+2021-10-29    0.034316
+                ...   
+2022-10-18    0.003829
+2022-10-19    0.008402
+2022-10-20   -0.066474
+2022-10-21    0.034543
+2022-10-24   -0.067128
+Name: Close, Length: 252, dtype: float64
+
+
+pct_change() is a Pandas function and can be applied to DataFrames.
+
+
+Daily Returns
+
+
+To visualize the results, we can create a plot for the daily returns:
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.Ticker('TSLA')
+price = data.history(period='1y')
+x = price['Close'].pct_change()
+x.plot()
+plt.savefig('plot.png')
+
+A histogram is an approximate representation of the distribution of numerical data.
+
+
+Daily Returns
+Drag and drop to create a histogram from the data stored in the DataFrame called 'data'.
+
+data.plot( kind = 'hist')
+
+
+Stock Returns
+
+
+After understanding how the returns are distributed, we can calculate the returns from an investment.
+For that, we need to calculate the cumulative returns, which can be done using the cumprod() function:
+
+x = price['Close'].pct_change()
+returns = (x + 1).cumprod()
+
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.Ticker('TSLA')
+price = data.history(period='1y')
+x = price['Close'].pct_change()
+returns = (x + 1).cumprod()
+
+returns.plot()
+plt.savefig('plot.png')
+
+The plot shows how a $1 investment would grow.
+The cumprod() function is used to get a cumulative product over an array of elements and return an array of the results.
+
+
+
+Stock Returns
+Guess the output of this code:
+
+x = np.array([2, 4, 2])
+r = x.cumprod()
+print(r)
+[ 2 8 16]
+
+Multiple Stocks
+
+
+Let's take 3 different tickers and use the pct_change() function to calculate the daily returns:
+
+
+import yfinance as yf
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+x = data['Close'].pct_change()
+
+print(x) 
+
+
+[                       0%                       ]
+[**********************67%*******                ]  2 of 3 completed
+[*********************100%***********************]  3 of 3 completed
+                AAPL      MSFT      TSLA
+Date                                    
+2021-01-04       NaN       NaN       NaN
+2021-01-05  0.012364  0.000965  0.007317
+2021-01-06 -0.033662 -0.025929  0.028390
+2021-01-07  0.034123  0.028457  0.079447
+2021-01-08  0.008631  0.006093  0.078403
+...              ...       ...       ...
+2022-10-18  0.009409  0.004084  0.003829
+2022-10-19  0.000765 -0.008470  0.008402
+2022-10-20 -0.003267 -0.001395 -0.066474
+2022-10-21  0.027059  0.025281  0.034543
+2022-10-24  0.007673  0.016996 -0.037306
+
+[456 rows x 3 columns]
+
+The code above gets the stock prices for the given stocks and applies to pct_change() function to the Close price.
+When we provide only the start date for the download() function, the end date is set as the current date.
+
+
+Multiple Stocks
+Fill in the blanks to download the prices of Apple and Microsoft for the period of July 1, 2020 to July 1, 2021.
+
+x = yf.download("AAPL MSFT",    start='2020-07-01'   end='2021-07-01')
+
+
+Multiple Stocks
+
+
+To better understand the return values, we can use the describe() function on the DataFrame to get the descriptive statistics:
+
+import yfinance as yf
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+
+x = data['Close'].pct_change()
+
+print(x.describe()) 
+
+
+
+import yfinance as yf
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+
+x = data['Close'].pct_change()
+
+print(x.describe()) 
+
+[                       0%                       ]
+[**********************67%*******                ]  2 of 3 completed
+[*********************100%***********************]  3 of 3 completed
+             AAPL        MSFT        TSLA
+count  455.000000  455.000000  455.000000
+mean     0.000477    0.000425    0.000354
+std      0.018536    0.017419    0.037858
+min     -0.058680   -0.054978   -0.121841
+25%     -0.009851   -0.008882   -0.021811
+50%      0.000613   -0.000033    0.001611
+75%      0.012773    0.011293    0.020553
+max      0.069778    0.066852    0.196412
+
+
+
+Descriptive statistics include the mean, standard deviation, min, max values, as well as the 25/50/75th% percentiles.
+
+
+Multiple Stocks
+
+
+Let's visualize the results with charts.
+
+Here is a chart comparing the daily prices of the stocks:
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+data['Close'].plot()
+plt.savefig('plot.png') 
+
+
+************************We can also plot their daily returns:
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+x = data['Close'].pct_change()
+x.plot()
+plt.savefig('plot.png')
+
+
+*************************Here are the cumulative returns for the given stocks:
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+x = data['Close'].pct_change()
+(x + 1).cumprod().plot()
+
+plt.savefig('plot.png')
+
+
+Multiple Stocks
+Drag and drop to calculate the plot of the cumulative returns of the stocks stored in 'data'.
+
+ret = data['Close'].pct_change()
+(ret + 1).cumprod().plot()
+
+
+#####################################################################################################
+
+Correlations
+
+
+In finance, correlation is a statistic that measures the degree to which two securities move in relation to each other.
+
+We can easily calculate the correlations between stocks in Python, with the corr() function.
+
+import yfinance as yf
+data = yf.download("FB AMZN AAPL NFLX GOOG", start='2020-01-01') 
+x = data['Close'].pct_change()
+corr = x.corr()
+print(corr) 
+
+
+import yfinance as yf
+
+data = yf.download("FB AMZN AAPL NFLX GOOG", start='2020-01-01') 
+x = data['Close'].pct_change()
+corr = x.corr()
+print(corr) 
+
+[                       0%                       ]
+[*******************   40%                       ]  2 of 5 completed
+[**********************60%****                   ]  3 of 5 completed
+[**********************80%*************          ]  4 of 5 completed
+[*********************100%***********************]  5 of 5 completed
+
+1 Failed download:
+- FB: No data found, symbol may be delisted
+          AAPL      AMZN  FB      GOOG      NFLX
+AAPL  1.000000  0.667427 NaN  0.719747  0.474129
+AMZN  0.667427  1.000000 NaN  0.680811  0.593840
+FB         NaN       NaN NaN       NaN       NaN
+GOOG  0.719747  0.680811 NaN  1.000000  0.501490
+NFLX  0.474129  0.593840 NaN  0.501490  1.000000
+
+Let's draw a nice graphic using the statmodels package:
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+data = yf.download("FB AMZN AAPL NFLX GOOG", start='2020-01-01') 
+x = data['Close'].pct_change()
+corr = x.corr()
+
+sm.graphics.plot_corr(corr, xnames=list(x.columns))
+
+plt.savefig('plot.png')
+
+This will result in a graphic that shows the correlations between the given stocks in the given period.
+Tap Continue to learn how to interpret the correlations.
+
+
+
+Correlations
+
+Fill in the blanks to find the correlations between the columns of the 'data' DataFrame.
+
+x = data.corr()
+
+
+Correlations
+
+
+The corr() function results in a matrix that includes values for each stock pair.
+The values are in the range of -1 to 1.
+
+A positive correlation means that the stocks have returns that are positively correlated and move in the same direction.
++1 means that the returns are perfectly correlated.
+
+A correlation of 0 shows no relationship between the pair.
+A negative correlation shows that the returns move in different directions.
+Finding stocks that have low correlation helps to diversify an investment portfolio and minimize risk.
+
+
+
+Analyzing a Portfolio
+
+
+In this lesson we will take a hypothetical portfolio of stocks and analyze it by calculating some important metrics.
+
+First, let's define our portfolio. As an example, let's create our portfolio as 30% Apple, 20% Amazon, 40% Microsoft and 10% Tesla.
+We will define the stock tickers and the portfolio weights using arrays:
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1] 
+
+Now, when we have the arrays defined, we can get the stock prices and calculate the portfolio returns:
+
+
+import yfinance as yf
+import numpy as np
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1]
+
+data = yf.download(stocks, start='2021-01-01')
+
+#daily returns
+x = data['Close'].pct_change()
+
+#portfolio return
+ret = (x * weights).sum(axis = 1)
+
+#total cumulative returns for our portfolio
+cumulative = (ret + 1).cumprod() 
+
+print(cumulative)
+
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+Date
+2021-01-04    1.000000
+2021-01-05    1.006828
+2021-01-06    0.984063
+2021-01-07    1.014647
+2021-01-08    1.029021
+                ...   
+2022-10-18    1.029712
+2022-10-19    1.025042
+2022-10-20    1.016972
+2022-10-21    1.046207
+2022-10-24    1.059040
+Length: 456, dtype: float64
+
+
+
+To get the daily portfolio returns, we multiplied the daily returns by the weights and calculated the sum of the results.
+
+Plotting the cumulative returns will give us a better understanding of the data:
+
+
+import yfinance as yf
+import numpy as np
+import matplotlib.pyplot as plt
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1]
+
+data = yf.download(stocks, start='2021-01-01')
+
+#daily returns
+x = data['Close'].pct_change()
+
+#portfolio return
+ret = (x * weights).sum(axis = 1)
+
+#total cumulative returns for our portfolio
+cumulative = (ret + 1).cumprod() 
+
+cumulative.plot()
+
+plt.savefig('plot.png')
+
+
+The chart shows how our portfolio performs in the period.
+
+
+Analyzing a Portfolio
+Fill in the weights values to define 40% of AAPL, 50% of NFLX, and 10% of AMZN.
+
+stocks = ['AAPL', 'NFLX', 'AMZN']w = [0.4, 0.5, 0.1]
+
+
+Analyzing a Portfolio
+
+
+Next, we will calculate the volatility of our portfolio.
+Volatility is also often used to measure risk. If a stock is very volatile, you can expect large changes in its price and therefore a higher risk.
+Volatility is calculated using the standard deviation of the portfolio return.
+
+We can calculate the daily volatility by simply using the NumPy std function on our daily returns:
+
+import yfinance as yf
+import numpy as np
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1]
+
+data = yf.download(stocks, start='2021-01-01')
+
+#daily returns
+x = data['Close'].pct_change()
+
+#portfolio return
+ret = (x * weights).sum(axis = 1)
+
+print(np.std(ret))
+
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+0.018131779134538076
+
+
+We can also calculate the annual volatility by taking the square root of the number of trading days in a year (252) and multiply it by the daily volatility:
+
+
+import yfinance as yf
+import numpy as np
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1]
+
+data = yf.download(stocks, start='2021-01-01')
+
+#daily returns
+x = data['Close'].pct_change()
+
+#portfolio return
+ret = (x * weights).sum(axis = 1)
+
+annual_std = np.std(ret) * np.sqrt(252)
+print(annual_std)
+
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+0.28783307050282625
+
+This will return the risk % of our portfolio.
+np.sqrt() is used to calculate the square root of a given number.
+
+
+Analyzing a Portfolio
+Volatility is expressed by the:
+
+***standard deviation of the returns
+
+
+Analyzing a Portfolio
+
+
+Another important metric is the Sharpe ratio.
+Sharpe ratio is the measure of the risk-adjusted return of a portfolio. A portfolio with a higher Sharpe ratio is considered better.
+
+To calculate the Sharpe ratio, we need to take the average return and divide it by the volatility.
+
+import yfinance as yf
+import numpy as np
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+weights = [0.3, 0.2, 0.4, 0.1]
+
+data = yf.download(stocks, start='2021-01-01')
+
+#daily returns
+x = data['Close'].pct_change()
+
+#portfolio return
+ret = (x * weights).sum(axis = 1)
+
+annual_std = np.std(ret) * np.sqrt(252)
+
+sharpe = (np.mean(ret) / np.std(ret))*np.sqrt(252)
+
+print(sharpe)
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+0.25463217102783375
+
+
+We multiplied the result by the square root of 252 to annualize the Sharpe ratio. (There are 252 trading days in a year)
+code repo icon
+
+
+Sharpe ratios greater than 1 are considered optimal.
+
+Analyzing a Portfolio
+Drag and drop to calculate the Sharpe ratio.
+
+sharpe = (np.mean(ret) / np.std(ret))
+
+
+#####################################################################################
+
+Loops
+
+
+Before we can do portfolio optimization, we need to learn about for loops and ranges.
+
+A loop allows you to run a block of code multiple times.
+Each time the code in a loop is executed, it is called an iteration.
+
+For example, we can use a for loop to iterate over an array and calculate the product of all elements:
+
+prices = [3, 5, 2, 8]
+ 
+prod = 1
+for p in prices:
+  prod = prod * p
+
+print(prod)
+
+240
+
+
+The code above will calculate the product of all elements in the array and output the result. Let's understand how it works.
+
+
+Loops
+
+
+The code creates a variable named prod, which will store the result and initialize it to 1.
+
+Next, during each iteration of the for loop, the prod variable is multiplied by the current item of the array:
+
+prices = [3, 5, 2, 8]
+ 
+prod = 1
+for p in prices:
+  prod = prod * p
+
+print(prod)
+
+
+Note the syntax of the for loop: it uses a temporary variable, which represents the current item of the array. We named it p, but you could name it anything you like.
+The for loop starts with a colon :.
+After that, the code that belongs to the for loop needs to be indented with spaces.
+That's how Python understands which block of code belongs to the for loop.
+
+
+Ranges
+
+
+If you need to run a for loop a given number of times, you can use a range.
+
+What is a range? It is a function that is used to create sequences.
+For example, the following range creates a sequence of numbers from 0 to 10:
+
+print(list(range(0, 10)))
+
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+The parameters specify the start and end of the sequence.
+Note that the end parameter is not included in the resulting sequence, while the start parameter is included.
+
+
+Ranges and Loops
+
+
+When we have a range, we can use the for loop to run over that range.
+
+For example, the following code will output 'hello!' 5 times:
+
+
+for i in range(0, 5):
+   print("hello!") 
+
+
+hello!
+hello!
+hello!
+hello!
+hello!
+
+for loops with ranges allow you to execute a block of code a specific number of times.
+We will use this technique in the next lesson, while performing Portfolio Optimization!
+
+
+###############################################################################################
+
+
+
+Portfolio Optimization
+
+
+We learned how to calculate the main metrics to analyze and evaluate a portfolio of stocks.
+Now we can use the power of Python to optimize a portfolio!
+Portfolio optimization is the technique of allocating assets so that it has the maximum return and minimum risk.
+This can be done by finding the allocation that results in the maximum Sharpe ratio.
+
+The simplest way to find the best allocation is to check many random allocations and find the one that has the best Sharpe ratio.
+This process of randomly guessing is known as a Monte Carlo Simulation.
+
+Portfolio Optimization
+
+
+To get started, let's define the initial stocks, download their price data, and calculate the daily returns.
+
+
+import yfinance as yf
+import numpy as np
+import pandas as pd
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+
+data = yf.download(stocks, start='2018-01-01')
+
+#daily returns
+data = data['Close']
+x = data.pct_change()
+
+print(x)
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+                AAPL      AMZN      MSFT      TSLA
+Date                                              
+2018-01-02       NaN       NaN       NaN       NaN
+2018-01-03 -0.000174  0.012775  0.004654 -0.010233
+2018-01-04  0.004645  0.004476  0.008801 -0.008290
+2018-01-05  0.011385  0.016163  0.012398  0.006230
+2018-01-08 -0.003714  0.014425  0.001020  0.062638
+...              ...       ...       ...       ...
+2022-10-18  0.009409  0.022585  0.004084  0.003829
+2022-10-19  0.000765 -0.011086 -0.008470  0.008402
+2022-10-20 -0.003267  0.001564 -0.001395 -0.066474
+2022-10-21  0.027059  0.035315  0.025281  0.034543
+2022-10-24  0.014803  0.004190  0.021188 -0.014876
+
+[1212 rows x 4 columns]
+
+
+We need to store the weights, returns and Sharpe ratios for each portfolio we will be checking so that we can then find the one that is best.
+We will define lists to store these values for each portfolio.
+p_weights = []
+p_returns = []
+p_risk = []
+p_sharpe = [] 
+
+[] defines an empty list.
+
+
+Portfolio Optimization
+
+
+We are going to randomly assign a weight to each stock in our portfolio, and then calculate the metrics for that portfolio, including the Sharpe ratio.
+
+To generate random weights, we will use the NumPy random function:
+
+import numpy as np
+
+wts = np.random.uniform(size = 4)
+wts = wts/np.sum(wts) 
+
+print(wts)
+
+
+[0.18335393 0.15865414 0.47358114 0.18441078]
+
+
+We divide the resulting weights by their sum to normalize them, so that the sum of the random weights is always 1.
+Running the code above will generate random weights that sum up to 1.
+
+
+Portfolio Optimization
+In order to result in a total allocation of 100%, the weights should add up to:
+1
+
+Portfolio Optimization
+
+
+Now we need to run a for loop, generate the random weights and calculate the returns, volatility and Sharpe ratio of the portfolio.
+We already learned how to calculate these metrics, so here comes the code:
+count = 500
+for k in range(0, count):
+   wts = np.random.uniform(size = len(x.columns))
+   wts = wts/np.sum(wts)
+   p_weights.append(wts)
+
+   #returns
+   mean_ret = (x.mean() * wts).sum()*252
+   p_returns.append(mean_ret)
+
+   #volatility
+   ret = (x * wts).sum(axis = 1)
+   annual_std = np.std(ret) * np.sqrt(252)
+   p_risk.append(annual_std)
+    
+   #Sharpe ratio
+   sharpe = (np.mean(ret) / np.std(ret))*np.sqrt(252)
+   p_sharpe.append(sharpe)
+
+
+The for loop runs 500 times. During each iteration we calculate the metrics and store them in the corresponding lists using the append() function.
+We used 500 to optimize the time to run the code in our Playground. In other scenarios, you could generate thousands of portfolios, to get a better result.
+
+The code seems long and complex, however it simply calculates the metrics using their formulas that we have seen before, and stores them in the lists.
+
+
+Portfolio Optimization
+
+
+We now have the metrics for 500 portfolios!
+Let's find the index of the portfolio with the maximum Sharpe ratio using the Numpy argmax() function and output the max Sharpe ratio and the weights:
+
+
+
+
+
+import yfinance as yf
+import numpy as np
+import pandas as pd
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+
+data = yf.download(stocks, start='2018-01-01')
+
+#daily returns
+data = data['Close']
+x = data.pct_change()
+
+p_weights = []
+p_returns = []
+p_risk = []
+p_sharpe = []
+
+count = 500
+for k in range(0, count):
+    wts = np.random.uniform(size = len(x.columns))
+    wts = wts/np.sum(wts)
+    p_weights.append(wts)
+
+    #returns
+    mean_ret = (x.mean() * wts).sum()*252
+    p_returns.append(mean_ret)
+
+    #volatility
+    ret = (x * wts).sum(axis = 1)
+    annual_std = np.std(ret) * np.sqrt(252)
+    p_risk.append(annual_std)
+    
+    #Sharpe ratio
+    sharpe = (np.mean(ret) / np.std(ret))*np.sqrt(252)
+    p_sharpe.append(sharpe)
+
+
+max_ind = np.argmax(p_sharpe)
+
+#Max Sharpe ratio
+print(p_sharpe[max_ind])
+
+#weights
+print(p_weights[max_ind])
+
+
+
+[                       0%                       ]
+[**********************50%                       ]  2 of 4 completed
+[**********************75%***********            ]  3 of 4 completed
+[*********************100%***********************]  4 of 4 completed
+1.1735325371196474
+[0.38048737 0.01657215 0.25454822 0.34839227]
+
+This portfolio results in the maximum Sharpe ratio.
+
+Let's draw a bar chart visualizing the weights:
+
+
+
+import yfinance as yf
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+
+data = yf.download(stocks, start='2018-01-01')
+
+#daily returns
+data = data['Close']
+x = data.pct_change()
+
+p_weights = []
+p_returns = []
+p_risk = []
+p_sharpe = []
+
+count = 500
+for k in range(0, count):
+    wts = np.random.uniform(size = len(x.columns))
+    wts = wts/np.sum(wts)
+    p_weights.append(wts)
+
+    #returns
+    mean_ret = (x.mean() * wts).sum()*252
+    p_returns.append(mean_ret)
+
+    #volatility
+    ret = (x * wts).sum(axis = 1)
+    annual_std = np.std(ret) * np.sqrt(252)
+    p_risk.append(annual_std)
+    
+    #Sharpe ratio
+    sharpe = (np.mean(ret) / np.std(ret))*np.sqrt(252)
+    p_sharpe.append(sharpe)
+
+
+max_ind = np.argmax(p_sharpe)
+
+s = pd.Series(p_weights[max_ind], index=x.columns)
+s.plot(kind='bar')
+
+plt.savefig('plot.png')
+
+
+
+You may get slightly different results each time you run the code, as the weights are randomly generated every time.
+
+
+Portfolio Optimization
+argmax() returns:
+#the index of the maximum value
+
+
+
+
+Portfolio Optimization
+
+
+We found the best portfolio weights!
+As a last step, let's plot all the 500 portfolios.
+The chart is called Efficient Frontier and shows the returns on the Y-axis and volatility on the X-axis.
+
+We can create the chart using the scatter() function, providing the volatility and return lists as parameters:
+
+
+
+
+import yfinance as yf
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+stocks = ['AAPL', 'AMZN', 'MSFT', 'TSLA']
+
+data = yf.download(stocks, start='2018-01-01')
+
+#daily returns
+data = data['Close']
+x = data.pct_change()
+
+p_weights = []
+p_returns = []
+p_risk = []
+p_sharpe = []
+
+count = 500
+for k in range(0, count):
+    wts = np.random.uniform(size = len(x.columns))
+    wts = wts/np.sum(wts)
+    p_weights.append(wts)
+
+    #returns
+    mean_ret = (x.mean() * wts).sum()*252
+    p_returns.append(mean_ret)
+
+    #volatility
+    ret = (x * wts).sum(axis = 1)
+    annual_std = np.std(ret) * np.sqrt(252)
+    p_risk.append(annual_std)
+    
+    #Sharpe ratio
+    sharpe = (np.mean(ret) / np.std(ret))*np.sqrt(252)
+    p_sharpe.append(sharpe)
+
+
+max_ind = np.argmax(p_sharpe)
+
+plt.scatter(p_risk, p_returns, c=p_sharpe, cmap='plasma')
+plt.colorbar(label='Sharpe Ratio')
+
+plt.scatter(p_risk[max_ind], p_returns[max_ind], color='r', marker='*', s=500)
+plt.show()
+
+plt.savefig('plot.png')
+
+
+
+We used additional parameters to make the chart prettier and add a color bar for the Sharpe ratio.
+
+We have also added a red star marker to the chart, showing the most efficient portfolio with the best Sharpe ratio.
+The Efficient Frontier chart shows the return we can get for the given volatility, or, the volatility that we get for a certain return.
+
+
+
+Drag and drop to calculate and plot the cumulative returns of the given stocks.
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+data = yf.download("AAPL MSFT TSLA", start='2021-01-01') 
+x = data['Close'].pct_change()(x + 1).cumprod().plot()
+
