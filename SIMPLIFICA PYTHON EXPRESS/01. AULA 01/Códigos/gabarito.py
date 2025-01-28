@@ -1,7 +1,7 @@
 from fpdf import FPDF
 import pandas as pd
 
-dados = pd.read_csv("dados.csv")
+dados = pd.read_csv("D:/Python/SIMPLIFICA PYTHON EXPRESS/01. AULA 01/Códigos/dados.csv")
 #print(dados['nomecompleto'])
 
 # Dados do certificado
@@ -17,7 +17,7 @@ for nome in dados['nomecompleto']:
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", 'B', size=15)
-    pdf.image("template.png", x=0, y=0)
+    pdf.image("D:/Python/SIMPLIFICA PYTHON EXPRESS/01. AULA 01/Códigos/template.png", x=0, y=0)
     pdf.set_text_color(33, 24, 136)
     # Adicionar o texto
     # Note que as coordenadas para o texto podem precisar ser ajustadas
